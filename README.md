@@ -217,8 +217,8 @@ Solemne2/
 ## Links
 
 - **Repositorio:** [github.com/DiegoUC-01/Solemne2](https://github.com/DiegoUC-01/Solemne2)
-- **DockerHub Frontend:** `docker.io/usuario/15dias-frontend:latest`
-- **DockerHub Backend:** `docker.io/usuario/15dias-backend:latest`
+- **DockerHub Frontend:** [matias0512/15dias-frontend](https://hub.docker.com/r/matias0512/15dias-frontend)
+- **DockerHub Backend:** [matias0512/15dias-backend](https://hub.docker.com/r/matias0512/15dias-backend)
 
 ---
 
