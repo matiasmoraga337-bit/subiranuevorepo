@@ -30,15 +30,9 @@ const props = defineProps({
 
 const locationClass = computed(() => `scene-${props.location}`)
 
-const imageModules = import.meta.glob('../assets/Imagen/*.{png,jpg,jpeg,webp,gif}', { eager: true, as: 'url' })
-
 const imageUrl = computed(() => {
   if (!props.image) return null
-  for (const [path, url] of Object.entries(imageModules)) {
-    const fileName = path.split('/').pop().split('.').slice(0, -1).join('.')
-    if (fileName === props.image) return url
-  }
-  return null
+  return `/Imagen/${props.image}.png`
 })
 </script>
 
