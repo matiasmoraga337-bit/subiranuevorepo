@@ -1,5 +1,5 @@
 # 15 Días — Juego de Supervivencia
-
+ds
 > *Toma de decisiones en un mundo post-apocalíptico. Cada elección tiene consecuencias.*
 
 Desarrollado por **Diego Alvarez** y **Matias Moraga**.
