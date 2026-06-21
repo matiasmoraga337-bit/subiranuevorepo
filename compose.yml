@@ -1,0 +1,38 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: 15dias-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: 15dias
+      MONGO_INITDB_ROOT_USERNAME: Admin
+      MONGO_INITDB_ROOT_PASSWORD: contraseñasegura
+
+  backend:
+    build: ./backend
+    container_name: 15dias-backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://Admin:contrase%C3%B1asegura@mongodb:27017/15dias?authSource=admin
+      JWT_SECRET: ${JWT_SECRET:-cambia-esto-por-un-secreto-real}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+
+  frontend:
+    build: ./Game
+    container_name: 15dias-frontend
+    ports:
+      - "5173:4173"
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:3000/api
+
+volumes:
+  mongo-data:
