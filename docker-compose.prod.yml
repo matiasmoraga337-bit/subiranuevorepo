@@ -22,8 +22,8 @@ services:
       PORT: 3000
       MONGODB_URI: mongodb://Admin:contrase%C3%B1asegura@mongodb:27017/15dias?authSource=admin
       JWT_SECRET: ${JWT_SECRET:-cambia-esto-por-un-secreto-real}
-      GEMINI_API_KEY: ${GEMINI_API_KEY}
-      ALLOWED_ORIGIN: http://localhost:5173
+      GEMINI_API_KEY: AQ.Ab8RN6K_gsrtUcTNOz96VDyAzajwHdF89nluqQkvm0Rv8LkJ6w
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN:-http://localhost:5173}
 
   frontend:
     image: matias0512/15dias-frontend:latest
