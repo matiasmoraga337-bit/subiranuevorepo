@@ -11,7 +11,14 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGIN || 'http://localhost:5173',
+  origin(origin, callback) {
+    const allowed = (process.env.ALLOWED_ORIGIN || 'http://localhost:5173').replace(/\/$/, '')
+    if (!origin || origin === allowed || origin.startsWith('http://localhost:')) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true,
 }))
 app.use(express.json())
