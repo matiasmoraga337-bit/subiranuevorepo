@@ -5,7 +5,7 @@
 - [Matias Moraga] 
 
 ## Repositorio GitHub
-[https://github.com/DiegoUC-01/Solemne2]
+[https://github.com/matiasmoraga337-bit/subiranuevorepo]
 
 ---
 

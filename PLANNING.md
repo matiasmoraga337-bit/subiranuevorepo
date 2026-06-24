@@ -1,7 +1,7 @@
 # PLANNING.md — 15 Días (Solemne 3)
 
 **Integrantes:** Diego Alvarez, Matias Moraga  
-**Repo:** [github.com/DiegoUC-01/Solemne2](https://github.com/DiegoUC-01/Solemne2)  
+**Repo:** [github.com/matiasmoraga337-bit/subiranuevorepo](https://github.com/matiasmoraga337-bit/subiranuevorepo)  
 **Entrega final:** 2 de julio de 2026
 
 ---

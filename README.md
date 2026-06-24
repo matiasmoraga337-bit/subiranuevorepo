@@ -1,5 +1,5 @@
 # 15 Días — Juego de Supervivencia
-ds
+
 > *Toma de decisiones en un mundo post-apocalíptico. Cada elección tiene consecuencias.*
 
 Desarrollado por **Diego Alvarez** y **Matias Moraga**.
@@ -74,8 +74,8 @@ En los días 5, 10 y 15 aparecen minijuegos interactivos:
 ### Frontend (modo local)
 
 ```bash
-git clone https://github.com/DiegoUC-01/Solemne2.git
-cd Solemne2
+git clone https://github.com/matiasmoraga337-bit/subiranuevorepo.git
+cd subiranuevorepo
 
 # Frontend
 cd Game
@@ -88,7 +88,7 @@ Abre `http://localhost:5173`. El modo local no requiere backend ni MongoDB.
 ### Backend (modo online)
 
 ```bash
-cd Solemne2/backend
+cd subiranuevorepo/backend
 pnpm install
 
 # Configurar variables de entorno
@@ -104,36 +104,32 @@ El backend corre en `http://localhost:3000`. Necesita MongoDB corriendo en `loca
 
 ```bash
 # Terminal 1 — Backend
-cd Solemne2/backend
+cd subiranuevorepo/backend
 pnpm dev
 
 # Terminal 2 — Frontend
-cd Solemne2/Game
+cd subiranuevorepo/Game
 pnpm dev
 ```
 
 ---
 
-## Ejecución con Docker Compose
+## Ejecución con Docker Compose (producción)
 
 ```bash
-git clone https://github.com/DiegoUC-01/Solemne2.git
-cd Solemne2
+# Descargar archivo de orquestación
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/matiasmoraga337-bit/subiranuevorepo/main/docker-compose.prod.yml" -OutFile "docker-compose.prod.yml"
 
-# Configurar variables de entorno (opcional, tiene defaults)
-cp backend/.env.example .env
-# Editar .env con JWT_SECRET y GEMINI_API_KEY
-
-# Levantar los 3 servicios
-docker compose up -d
+# Levantar el frontend (backend y MongoDB están en la nube)
+docker compose -f docker-compose.prod.yml up -d
 ```
 
 Esto levanta:
-- **MongoDB** en `localhost:27017`
-- **Backend** en `localhost:3000`
-- **Frontend** en `localhost:5173`
+- **Frontend** en `localhost:5173` (imagen desde DockerHub)
+- **Backend** en Render: `one5dias-backend.onrender.com`
+- **MongoDB** en Atlas (nube)
 
-Para detener: `docker compose down`
+Para detener: `docker compose -f docker-compose.prod.yml down`
 
 ---
 
@@ -156,8 +152,8 @@ pnpm test
 ## Estructura del Proyecto
 
 ```
-Solemne2/
-├── compose.yml              # Orquestación Docker (3 servicios)
+subiranuevorepo/
+├── compose.yml              # Orquestación Docker desarrollo (3 servicios)
 ├── DESIGN.md                # Documento de diseño fullstack
 ├── PLANNING.md              # Planificación semanal
 ├── README.md
@@ -216,7 +212,8 @@ Solemne2/
 
 ## Links
 
-- **Repositorio:** [github.com/DiegoUC-01/Solemne2](https://github.com/DiegoUC-01/Solemne2)
+- **Repositorio:** [github.com/matiasmoraga337-bit/subiranuevorepo](https://github.com/matiasmoraga337-bit/subiranuevorepo)
+- **Backend (Render):** [one5dias-backend.onrender.com](https://one5dias-backend.onrender.com)
 - **DockerHub Frontend:** [matias0512/15dias-frontend](https://hub.docker.com/r/matias0512/15dias-frontend)
 - **DockerHub Backend:** [matias0512/15dias-backend](https://hub.docker.com/r/matias0512/15dias-backend)
 
