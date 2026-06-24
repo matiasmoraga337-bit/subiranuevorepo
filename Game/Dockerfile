@@ -10,6 +10,9 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+ARG VITE_API_URL=https://one5dias-backend.onrender.com/api
+ENV VITE_API_URL=$VITE_API_URL
+
 RUN pnpm build
 
 EXPOSE 4173
