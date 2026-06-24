@@ -24,7 +24,7 @@ export const useGameStore = defineStore('game', {
     gameOverReason: null,
     journal: [],
     serverGameId: null,
-    loading: false,
+    aiLoading: false,
   }),
 
   getters: {
@@ -340,7 +340,6 @@ export const useGameStore = defineStore('game', {
     },
 
     async startGameServer() {
-      this.loading = true
       try {
         const data = await api.games.create()
         this.serverGameId = data._id
@@ -348,73 +347,59 @@ export const useGameStore = defineStore('game', {
       } catch (err) {
         console.error('Error al crear partida en servidor:', err)
         this.startGame()
-      } finally {
-        this.loading = false
       }
     },
 
     async startGameOnServer() {
       if (!this.serverGameId) return
-      this.loading = true
       try {
         const data = await api.games.start(this.serverGameId)
         this.applyServerState(data)
       } catch (err) {
         console.error('Error al iniciar partida en servidor:', err)
-      } finally {
-        this.loading = false
       }
     },
 
     async advanceSegmentServer() {
       if (!this.serverGameId) return
-      this.loading = true
       try {
         const data = await api.games.advanceSegment(this.serverGameId)
         this.applyServerState(data)
       } catch (err) {
         console.error('Error al avanzar segmento en servidor:', err)
-      } finally {
-        this.loading = false
       }
     },
 
     async makeDecisionServer(index) {
       if (!this.serverGameId) return
-      this.loading = true
       try {
         const data = await api.games.makeDecision(this.serverGameId, index)
         this.applyServerState(data)
       } catch (err) {
         console.error('Error al tomar decision en servidor:', err)
-      } finally {
-        this.loading = false
       }
     },
 
     async continueAfterResultServer() {
       if (!this.serverGameId) return
-      this.loading = true
+      this.aiLoading = true
       try {
         const data = await api.games.continue(this.serverGameId)
         this.applyServerState(data)
       } catch (err) {
         console.error('Error al continuar en servidor:', err)
       } finally {
-        this.loading = false
+        this.aiLoading = false
       }
     },
 
     async completeMinigameServer(result) {
       if (!this.serverGameId) return
-      this.loading = true
       try {
         const data = await api.games.completeMinigame(this.serverGameId, result)
         this.applyServerState(data)
       } catch (err) {
         console.error('Error al completar minijuego en servidor:', err)
-      } finally {
-        this.loading = false
       }
     },
 

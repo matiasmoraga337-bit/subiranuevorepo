@@ -378,7 +378,7 @@
       </footer>
     </div>
 
-    <div v-if="game.loading" class="loading-overlay">
+    <div v-if="game.aiLoading" class="loading-overlay">
       <div class="loading-spinner"></div>
       <p class="loading-text">GENERANDO...</p>
     </div>
