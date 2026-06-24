@@ -93,10 +93,12 @@ defineExpose({ skip })
   cursor: pointer;
   user-select: none;
   padding: 20px;
-  min-height: 120px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   outline: none;
 }
 

@@ -377,6 +377,11 @@
         </div>
       </footer>
     </div>
+
+    <div v-if="game.loading" class="loading-overlay">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">GENERANDO...</p>
+    </div>
   </div>
 </template>
 
@@ -877,6 +882,45 @@ watch(() => game.phase, (newPhase) => {
 .restart-btn:hover {
   background: #22c55e;
   transform: scale(1.05);
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255, 255, 255, 0.1);
+  border-top: 6px solid #fbbf24;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  color: #fbbf24;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .gameover-buttons, .victory-buttons {
